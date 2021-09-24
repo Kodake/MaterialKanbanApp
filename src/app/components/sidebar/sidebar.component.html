@@ -1,0 +1,15 @@
+<mat-drawer-container [class.sideBar]="sideBar" autosize>
+    <mat-drawer #drawer class="example-sidenav" mode="side">
+        <div>
+            <button type="button" mat-button (click)="changePage('')">
+                Board
+            </button>
+            <button type="button" mat-button (click)="changePage('note')">
+                Notes
+            </button>
+        </div>
+    </mat-drawer>
+    <mat-drawer-content>
+        <ng-content></ng-content>
+    </mat-drawer-content>
+</mat-drawer-container>

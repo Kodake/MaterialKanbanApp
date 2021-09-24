@@ -1,0 +1,9 @@
+.sideBar {
+    height: 100%;
+}
+
+button {
+    width: 260px;
+    margin-top: 10px;
+    display: block;
+}

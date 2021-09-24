@@ -1,0 +1,13 @@
+.note {
+    width: 100%;
+    height: calc(100vh - 64px);
+    padding: 20px;
+    overflow: auto;
+    box-sizing: border-box;
+}
+
+.title {
+    height: 45px;
+    font-size: 16px;
+    font-weight: bold;
+}

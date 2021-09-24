@@ -1,0 +1,10 @@
+.example-form {
+    height: 405px;
+    width: 100%;
+}
+
+.example-full-width {
+    width: 100%;
+    margin-bottom: 10px;
+    line-height: 25px;
+}

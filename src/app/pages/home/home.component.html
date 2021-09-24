@@ -1,0 +1,235 @@
+<div class="home">
+    <div class="title">
+      <span>
+        Kanban Board
+      </span>
+    </div>
+    <div class="todo-content">
+      <div class="card">
+        <div class="card-title">
+          Backlog
+          <div>
+            <button
+              mat-icon-button
+              color="primary"
+              (click)="openCreateDialog()"
+              aria-label="Example icon button with a vertical three dot icon"
+            >
+              <mat-icon>add</mat-icon>
+            </button>
+          </div>
+        </div>
+        <mat-card>
+          <div
+            cdkDropList
+            #todoList="cdkDropList"
+            [cdkDropListData]="todo"
+            [cdkDropListConnectedTo]="[processList, doneList]"
+            class="example-list"
+            (cdkDropListDropped)="drop($event)"
+          >
+            <div class="nothing" *ngIf="todo.length === 0">
+              Empty list
+            </div>
+            <mat-card
+              class="example-box starting-box"
+              [class.low]="item.priority.value === 0"
+              [class.normal]="item.priority.value === 1"
+              [class.hight]="item.priority.value === 2"
+              *ngFor="let item of todo"
+              cdkDrag
+            >
+              <span class="box-text">{{item.text}}</span>
+              <div class="actions">
+                <button
+                  mat-icon-button
+                  color="primary"
+                  *ngIf="item.type.value === 0"
+                  class="status-btn"
+                  aria-label="Example icon button with a vertical three dot icon"
+                >
+                  <span class="material-icons">
+                    bug_report
+                  </span>
+                </button>
+                <button
+                  mat-icon-button
+                  color="primary"
+                  *ngIf="item.type.value === 1"
+                  class="status-btn"
+                  aria-label="Example icon button with a vertical three dot icon"
+                >
+                  <span class="material-icons">
+                    autorenew
+                  </span>
+                </button>
+                <button
+                  mat-icon-button
+                  color="primary"
+                  class="status-btn"
+                  *ngIf="item.type.value === 2"
+                  aria-label="Example icon button with a vertical three dot icon"
+                >
+                  <span class="material-icons">
+                    assignment
+                  </span>
+                </button>
+                <span class="time">
+                  {{item.time}}
+                </span>
+              </div>
+            </mat-card>
+          </div>
+        </mat-card>
+      </div>
+      <div class="card">
+        <div class="card-title">
+          In Progress
+        </div>
+        <mat-card>
+          <div
+            cdkDropList
+            #processList="cdkDropList"
+            [cdkDropListData]="process"
+            [cdkDropListConnectedTo]="[todoList, doneList]"
+            class="example-list"
+            (cdkDropListDropped)="drop($event)"
+          >
+            <div class="nothing" *ngIf="process.length === 0">
+              Empty list
+            </div>
+            <mat-card
+              class="example-box process-box"
+              [class.low]="item.priority.value === 0"
+              [class.normal]="item.priority.value === 1"
+              [class.hight]="item.priority.value === 2"
+              *ngFor="let item of process"
+              cdkDrag
+            >
+              <span class="box-text">{{item.text}}</span>
+              <div class="actions">
+                <button
+                  mat-icon-button
+                  color="primary"
+                  *ngIf="item.type.value === 0"
+                  class="status-btn"
+                  aria-label="Example icon button with a vertical three dot icon"
+                >
+                  <span class="material-icons">
+                    bug_report
+                  </span>
+                </button>
+                <button
+                  mat-icon-button
+                  color="primary"
+                  *ngIf="item.type.value === 1"
+                  class="status-btn"
+                  aria-label="Example icon button with a vertical three dot icon"
+                >
+                  <span class="material-icons">
+                    autorenew
+                  </span>
+                </button>
+                <button
+                  mat-icon-button
+                  color="primary"
+                  class="status-btn"
+                  *ngIf="item.type.value === 2"
+                  aria-label="Example icon button with a vertical three dot icon"
+                >
+                  <span class="material-icons">
+                    assignment
+                  </span>
+                </button>
+  
+                <span class="time">
+                  {{item.time}}
+                </span>
+              </div>
+            </mat-card>
+          </div>
+        </mat-card>
+      </div>
+      <div class="card">
+        <div class="card-title">
+          Done
+        </div>
+        <mat-card>
+          <div
+            cdkDropList
+            #doneList="cdkDropList"
+            [cdkDropListData]="done"
+            [cdkDropListConnectedTo]="[processList, todoList]"
+            class="example-list"
+            (cdkDropListDropped)="drop($event)"
+          >
+            <div class="nothing" *ngIf="done.length === 0">
+              Empty list
+            </div>
+            <mat-card
+              class="example-box done-box"
+              [class.low]="item.priority.value === 0"
+              [class.normal]="item.priority.value === 1"
+              [class.hight]="item.priority.value === 2"
+              *ngFor="let item of done"
+              cdkDrag
+            >
+              <span class="box-text">{{item.text}}</span>
+              <div class="actions">
+                <button
+                  mat-icon-button
+                  style="color: gray;"
+                  *ngIf="item.type.value === 0"
+                  class="status-btn"
+                  aria-label="Example icon button with a vertical three dot icon"
+                >
+                  <span class="material-icons">
+                    bug_report
+                  </span>
+                </button>
+                <button
+                  mat-icon-button
+                  style="color: gray;"
+                  *ngIf="item.type.value === 1"
+                  class="status-btn"
+                  aria-label="Example icon button with a vertical three dot icon"
+                >
+                  <span class="material-icons">
+                    autorenew
+                  </span>
+                </button>
+                <button
+                  mat-icon-button
+                  style="color: gray;"
+                  class="status-btn"
+                  *ngIf="item.type.value === 2"
+                  aria-label="Example icon button with a vertical three dot icon"
+                >
+                  <span class="material-icons">
+                    assignment
+                  </span>
+                </button>
+                <button
+                  mat-icon-button
+                  matTooltip="Delete"
+                  matTooltipPosition="above"
+                  style="color: gray;"
+                  class="status-btn delete-btn"
+                  (click)="deleteFromDone(item)"
+                  aria-label="Example icon button with a vertical three dot icon"
+                >
+                  <span class="material-icons">
+                    delete
+                  </span>
+                </button>
+                <span class="time">
+                  {{item.time}}
+                </span>
+              </div>
+            </mat-card>
+          </div>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+  
